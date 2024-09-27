@@ -1,22 +1,14 @@
 ﻿namespace Core.Persistence.Dynamic;
 
-public class Filter
+public class Filter(string field, string @operator)
 {
-    public string Field { get; set; }
-    public string Operator { get; set; }
+    public string Field { get; set; } = field;
+    public string Operator { get; set; } = @operator;
     public string? Value { get; set; }
     public string? Logic { get; set; }
     public IEnumerable<Filter>? Filters { get; set; }
 
-    public Filter()
+    public Filter() : this(string.Empty, string.Empty)
     {
-        Field = string.Empty;
-        Operator = string.Empty;
-    }
-
-    public Filter(string field, string @operator)
-    {
-        Field = field;
-        Operator = @operator;
     }
 }

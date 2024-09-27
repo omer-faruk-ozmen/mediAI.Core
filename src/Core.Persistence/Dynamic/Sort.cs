@@ -1,19 +1,11 @@
 ﻿namespace Core.Persistence.Dynamic;
 
-public class Sort
+public class Sort(string field, string dir)
 {
-    public string Field { get; set; }
-    public string Dir { get; set; }
+    public string Field { get; set; } = field;
+    public string Dir { get; set; } = dir;
 
-    public Sort()
+    public Sort() : this(string.Empty, string.Empty)
     {
-        Field = string.Empty;
-        Dir = string.Empty;
-    }
-
-    public Sort(string field, string dir)
-    {
-        Field = field;
-        Dir = dir;
     }
 }

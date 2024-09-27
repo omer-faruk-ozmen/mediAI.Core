@@ -9,18 +9,12 @@ using Core.Persistence.Paging;
 
 namespace Core.Persistence.Repositories;
 
-public class EfRepositoryBase<TEntity, TEntityId, TContext>
-    : IAsyncRepository<TEntity, TEntityId>,
-        IRepository<TEntity, TEntityId>
+public class EfRepositoryBase<TEntity, TEntityId, TContext>(TContext context) : IAsyncRepository<TEntity, TEntityId>,
+    IRepository<TEntity, TEntityId>
     where TEntity : Entity<TEntityId>
     where TContext : DbContext
 {
-    protected readonly TContext Context;
-
-    public EfRepositoryBase(TContext context)
-    {
-        Context = context;
-    }
+    protected readonly TContext Context = context;
 
     public IQueryable<TEntity> Query()
     {
